@@ -467,6 +467,6 @@ mean_massloss_total <- step_calculations %>%
 
 mean(mean_massloss_total$g_per_milesteps, na.rm = TRUE)
 
-#-0.04168425 g lost per mile without removing outliers
+#Average: -0.04168425 g lost per mile without removing outliers
 
 
