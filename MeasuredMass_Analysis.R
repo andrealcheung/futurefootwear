@@ -26,16 +26,16 @@ summary(mass_multi_lm2_new)
 
 lmeq2_new = function(x){coef(mass_multi_lm2)[2]*x+coef(mass_multi_lm2_new)[1]} 
 
-mass_multi_lm2_plot_new <- ggplot(mass_joined_weight_nopos,aes(x=`steps to miles`,y=mass_change,color=weight))+
+mass_multi_lm2_plot_new <- ggplot(mass_joined_weight_nopos,aes(x=`steps to miles`,y=measured_mass_change,color=weight))+
   geom_point() +
-  stat_function(fun=lmeq2,geom="line")+
+  stat_function(fun=lmeq2_new ,geom="line")+
   geom_hline(yintercept=c(0), color="dark blue")+
   theme_bw() +
   scale_y_continuous(limits = c(-7, 2)) + 
   scale_x_continuous(limits = c(0, 600)) +
   labs(title = "Forced to Zero, NO positive Values", y = "Mass Change (g)", x = "Distance Travelled (Miles)")
 
-mass_multi_lm2_plot2_new
+mass_multi_lm2_plot_new
 
 ########################################################################################
 
