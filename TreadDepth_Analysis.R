@@ -40,8 +40,8 @@ full_data_joined_tread_norm
 #run a regression on average_tread_mass lost against distanced travelled
 treadmass_miles_lm <- lm(formula = average_tread_mass ~ `steps to miles`, data = full_data_joined_tread_norm)
 summary(treadmass_miles_lm) 
-#Multiple R-squared:  0.2194,	Adjusted R-squared:  0.2103 
-#F-statistic: 24.17 on 1 and 86 DF,  p-value: 4.19e-06
+#Multiple R-squared:  0.1567,	Adjusted R-squared:  0.1484 
+#F-statistic: 18.95 on 1 and 102 DF,  p-value: 3.197e-05
 
 #add trendline to
 treadmass_miles_lm_graph<- ggplot(full_data_joined_tread, aes(x=`steps to miles`, y= average_tread_mass))+
@@ -114,12 +114,12 @@ treadmasslost_model
 #mean average tread loss (mg)
 mean_average_tread_mass_change <- mean(full_data_joined_tread_norm$average_tread_mass, na.rm = TRUE)
 mean_average_tread_mass_change
-#-2.0765
+#-2.313494
 
 #mean average tread loss per mile (mg)
 mean_average_tread_mass_changenorm <- mean(full_data_joined_tread_norm$tread_mass_lost_per_mile, na.rm = TRUE)
 mean_average_tread_mass_changenorm
-#-0.042222
+#-0.04747255
 
 
 #############Calculating measurement error for tread depth measurements#############
@@ -157,8 +157,8 @@ measured_mass_norm_boxplot
 ###### find the median and mean of average tread mass lost #######
 median(full_data_joined_tread_norm$tread_mass_lost_per_mile, na.rm = TRUE)
 mean(full_data_joined_tread_norm$tread_mass_lost_per_mile, na.rm = TRUE)
-#median: -0.01617154
-#mean: -0.04222232
+#median: -0.01970962
+#mean: -0.04747255
 
 
 
@@ -195,8 +195,8 @@ weight_steps_lm1 <- lm(formula = average_tread_mass ~ 0 + weight + `steps to mil
 
 summary(weight_steps_lm1)
 #pvalue<0.01
-#weight -0.007312 
-#steps to miles -0.006762 
+#weight -0.009944   
+#steps to miles -0.005622 
 
 lm1equation = function(x){coef(weight_steps_lm1)[2]*x+coef(weight_steps_lm1)[1]} #multivariate equation above to be plotted in gplot, ask Allison if I am using the right coefficients
 
@@ -222,8 +222,8 @@ tread_joined_weight_nopos <- tread_joined_weight %>%
 weight_steps_lm2 <- lm(formula = average_tread_mass ~ 0 + weight + `steps to miles`, data = tread_joined_weight_nopos) #linear model with weight as a contributing factor
 
 summary(weight_steps_lm2)
-#weight -0.009199 
-#steps to miles -0.005944
+#weight -0.011737
+#steps to miles -0.004862
 #pvalue<0.01
 
 lm2equation = function(x){coef(weight_steps_lm2)[2]*x+coef(weight_steps_lm2)[1]} #multivariate equation above to be plotted in gplot, ask Allison if I am using the right coefficients
@@ -340,16 +340,16 @@ tread_sample_size_noout_nopos
 ####Averages####
 
 mean(tread_joined_noout$tread_mass_lost_per_mile)
-#-0.05547505 grams/mile
+#-0.05899063 grams/mile
 
-mean(mass_joined_fixed_noout2$measuremass_lost_per_mile)
+mean(mass_joined_noout$measuremass_lost_per_mile)
 #-0.03245783
 
 
 ###############Quartiles for Tread Derived Mass loss#################
 
 summary(tread_joined_noout$`steps to miles`)
-# First quartile is 29.47, mean is 140.81, 3rd quartile is 221.35, max is 602.50
+# First quartile is 32.37 , mean is 135.42, 3rd quartile is 212.17, max is 602.50
 
 
 steps_1Q_tread <- full_data_joined_tread_norm %>% 
@@ -369,8 +369,8 @@ steps_4Q_tread <- full_data_joined_tread_norm %>%
 
 
 
-mean(steps_1Q_tread$tread_mass_lost_per_mile, na.rm = TRUE) #-0.09192266
-mean(steps_2Q_tread$tread_mass_lost_per_mile, na.rm = TRUE) #-0.0296915
-mean(steps_3Q_tread$tread_mass_lost_per_mile, na.rm = TRUE) #-0.01108025
+mean(steps_1Q_tread$tread_mass_lost_per_mile, na.rm = TRUE) #-0.1035245
+mean(steps_2Q_tread$tread_mass_lost_per_mile, na.rm = TRUE) #-0.03629332
+mean(steps_3Q_tread$tread_mass_lost_per_mile, na.rm = TRUE) #-0.01084244
 mean(steps_4Q_tread$tread_mass_lost_per_mile, na.rm = TRUE) #-0.007556803
 

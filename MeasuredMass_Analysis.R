@@ -98,7 +98,7 @@ mass_multi_lm3_plot_new
 ####Averages####Mean Mass Loss Rate#######
 
 mean(tread_joined_noout$tread_mass_lost_per_mile)
-#-0.05547505 grams/mile
+#-0.05899063 grams/mile
 
 mean(mass_joined_noout$measuremass_lost_per_mile)
 #-0.03245783 grams/mile
