@@ -12,14 +12,10 @@ median(tread_joined_noout$tread_mass_lost_per_mile)
 median(mass_joined_noout$measuremass_lost_per_mile)
 #-0.01439732 grams/mile
 
+#mean loss from all pairs of shoes w/o distance traveled for both 
 
-tread_depth_measureerror <- tread_depth_raw_initial %>% 
-  mutate("measurement_difference"= final_mm-initial_mm) %>% 
-  group_by(shoe_ID,model,side,location) %>% 
-  summarize(
-    average_measurement_difference=mean(measurement_difference)
-  ) %>% 
-  drop_na()
+mean(tread_joined_noout$average_tread_mass)
+#-2.406649
 
-abs(tread_depth_measureerror$average_measurement_difference) #abslute value of the differences 
-#the mean of these abolute values is 0.238645833
+mean(mass_joined_noout$measured_mass_change)
+#-2.12279
