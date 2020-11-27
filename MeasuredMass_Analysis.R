@@ -72,7 +72,7 @@ mass_joined_noout <- mass_joined_weight_nopos %>%
 mass_multi_lm3_new <- lm(formula = measured_mass_change ~ 0 + weight + `steps to miles`, data = mass_joined_noout) #linear model with weight as a contributing factor
 
 summary(mass_multi_lm3_new)
-# p << .001, R-squared = 0.5988
+# p << .001, R-squared = 0.5243
 
 lmeq3_new = function(x){coef(mass_multi_lm3)[2]*x+coef(mass_multi_lm3_new)[1]}
 
