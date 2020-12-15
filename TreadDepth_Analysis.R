@@ -19,19 +19,21 @@ tread_mass_average <- tread_joined %>%
   ) 
 
 #join step data with average tread mas lost
-full_data_joined_tread <- full_join(full_data_joined, tread_mass_average) 
+full_data_joined_tread <- full_join(full_data_joined, tread_joined_shoeID) 
 
 #create a data frame that includes normalized mass loss, average tread mass divided by steps to miles, filtered out ALL CONTROLLS, and participants with not data
 full_data_joined_tread_norm <- full_data_joined_tread %>% 
   mutate("tread_mass_lost_per_mile"= average_tread_mass/`steps to miles`) %>% 
   filter(name != "CONTROL") %>% 
-  filter(name != "BRI WINKLER") %>% 
-  filter(name != "THOMAS BUTERA") %>% 
-  filter(name != "TIMMY HUYNH") %>% 
-  filter(name != "CURTIS BAUMANN") %>%
-  filter(name != "SHIVA HASSON") %>%
-  filter(name != "GARY FOX") %>% 
-  filter(name != "LINDA HUYNH") %>% 
+  filter(name != "BRI WINKLER") %>% #DID NOT TRACK STEPS
+  filter(name != "THOMAS BUTERA") %>% #DID NOT TRACK STEPS 
+  filter(name != "TIMMY HUYNH") %>% #DID NOT RETURN
+  filter(name != "CURTIS BAUMANN") %>% #DID NOT RETURN
+  filter(name != "SHIVA HASSON") %>% #DID NOT RETURN
+  filter(name != "GARY FOX") %>% #DID NOT TRACK STEPS 
+  filter(name != "LINDA HUYNH") %>% #DID NOT RETURN
+  filter(name != "BRIDGET GIBBONS") %>% #DID NOT WEAR
+  filter(name != "ANDREW PATERSON (REEBOK RAINBOW)") #DID NOT WEAR
   drop_na(average_tread_mass)
 #these individuals are being excluded because they did not return their shoes or did not return any step data. 
 full_data_joined_tread_norm
